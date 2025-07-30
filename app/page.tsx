@@ -3,6 +3,8 @@ import { prisma } from "./utils/db";
 import { Suspense } from "react";
 import BaseLoading from "@/components/general/BaseLoading";
 
+export const revalidate = 60; // revalidate every 60 seconds
+
 async function getPosts() {
   // const items = [
   //   {

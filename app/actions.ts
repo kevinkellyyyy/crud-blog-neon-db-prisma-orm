@@ -3,6 +3,7 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { prisma } from "./utils/db";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export async function handleSubmit(formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -27,5 +28,7 @@ export async function handleSubmit(formData: FormData) {
     },
   });
 
-  return redirect("/");
+  revalidatePath("/"); // revalidate cache the home page to show the new post
+
+  return redirect("/dashboard");
 }

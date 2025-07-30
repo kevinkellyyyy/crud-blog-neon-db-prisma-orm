@@ -34,7 +34,7 @@ export default async function Dashboard() {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold">Your Blog Articles</h2>
+        <h1 className="text-3xl font-bold tracking-tight mb-8">Latest Post</h1>
         <Link href="/dashboard/create" className={buttonVariants()}>
           Create Post
         </Link>

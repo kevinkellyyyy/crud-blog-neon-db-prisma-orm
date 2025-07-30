@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { AuthButtons } from "./AuthButtons";
-import {
-  getKindeServerSession,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/server";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { buttonVariants } from "../ui/button";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
-export async function Navbar() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+export function Navbar() {
+  // using getKindeServerSession will always get latest user data from server side, but it causing dynamic rendering
+  // to all rendered components that have navbar, but there are some component that should be static like create post that dont need fetch anything
+  // const { getUser } = getKindeServerSession();
+
+  // change to client sided so it will not always get user data, prevent dynamic render in compoenet that need to be static
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
 
   return (
     <nav className="py-5 flex items-center justify-between">
