@@ -1,10 +1,8 @@
 import { prisma } from "@/app/utils/db";
 import { ButtonBack } from "@/components/general/ButtonBack";
-import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { isValidUrl } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function getPostDetail(id: string) {
